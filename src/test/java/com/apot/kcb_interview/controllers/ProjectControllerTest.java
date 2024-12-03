@@ -19,12 +19,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.apot.kcb_interview.models.dtos.CreateTaskDto;
 import com.apot.kcb_interview.models.entities.Project;
 import com.apot.kcb_interview.models.entities.Task;
 import com.apot.kcb_interview.models.enums.Status;
 import com.apot.kcb_interview.services.ProjectService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @WebMvcTest(ProjectController.class)
 public class ProjectControllerTest {
