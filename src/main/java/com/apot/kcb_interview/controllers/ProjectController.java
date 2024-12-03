@@ -4,6 +4,9 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,8 +52,15 @@ public class ProjectController {
   }
 
   @PostMapping("/{projectId}/tasks")
-  public void addTaskToProject(@PathVariable Long projectId, @Valid @RequestBody CreateTaskDto createTaskDto) {
-    this.projectService.addTaskToProject(projectId, createTaskDto);
+  public ResponseEntity<Task> addTaskToProject(@PathVariable Long projectId,
+      @Valid @RequestBody CreateTaskDto createTaskDto) {
+    Task task = this.projectService.addTaskToProject(projectId, createTaskDto);
+
+    if (task == null) {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    return new ResponseEntity<>(task, HttpStatus.FOUND);
   }
 
   @GetMapping("/{projectId}/tasks")

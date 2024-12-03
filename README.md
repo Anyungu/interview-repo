@@ -1,6 +1,6 @@
-Task Management Application
+## Task Management Application
 
-Prerequisites
+## Prerequisites
 Before deploying and running the application, ensure you have the following:
 
 Java Development Kit (JDK): Version 17 or higher.
@@ -38,6 +38,5 @@ java -jar target/task-management-app-0.0.1-SNAPSHOT.jar
 5. Access the Application
 The application will be accessible at:
 
-arduino
-Copy code
 http://localhost:8080
+http://localhost:8080/swagger-ui/index.html
