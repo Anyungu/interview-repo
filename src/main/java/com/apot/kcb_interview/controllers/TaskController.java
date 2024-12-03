@@ -1,5 +1,8 @@
 package com.apot.kcb_interview.controllers;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +31,8 @@ public class TaskController {
   }
 
   @DeleteMapping("/{taskId}")
-  public void deleteTask(@PathVariable Long taskId) {
+  public ResponseEntity<?> deleteTask(@PathVariable Long taskId) {
     this.taskService.deleteTask(taskId);
+    return new ResponseEntity<>(HttpStatus.OK);
   }
 }
